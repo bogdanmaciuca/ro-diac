@@ -23,8 +23,8 @@ class CharLTSM(torch.nn.Module):
     def __init__(self, vocab_size, hidden_dim, num_layers):
         super(CharLTSM, self).__init__()
         self.embedding = torch.nn.Embedding(vocab_size, hidden_dim)
-        self.lstm = torch.nn.LSTM(hidden_dim, hidden_dim, num_layers, batch_first=True)
-        self.fc = torch.nn.Linear(hidden_dim, vocab_size)
+        self.lstm = torch.nn.LSTM(hidden_dim, hidden_dim, num_layers, batch_first=True, bidirectional=True, dropout=0.5)
+        self.fc = torch.nn.Linear(hidden_dim * 2, vocab_size)
 
     def forward(self, x, hidden=None):
         emb = self.embedding(x)

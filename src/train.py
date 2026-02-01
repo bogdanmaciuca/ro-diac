@@ -7,11 +7,11 @@ DEVICE = 'cpu'
 HIDDEN_DIM = 256
 NUM_LAYERS = 3
 BATCH_SIZE = 64
-EPOCHS = 10
+EPOCHS = 4
 LR = 0.002
 SEQ_LEN = 100
 
-raw_text = open('../data/ziarul-lumina.txt').read()[:200000]
+raw_text = open('../data/ziarul-lumina.txt').read()[:500000]
 
 dataset = model.TextDataset(raw_text, SEQ_LEN)
 dataloader = torch.utils.data.DataLoader(
